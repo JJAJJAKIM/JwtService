@@ -25,7 +25,7 @@ public class WebSecurity {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		// 스프링 필터 비활성화
-		http.csrf(AbstractHttpConfigurer::disable);
+		http.csrf(AbstractHttpConfigurer::disable); // 스프링 시큐리티에서 기본제공하는 토큰. 해당 기능을 활성화 시키면 모든 요청에 csrf토큰이 필요하다.
 		http.formLogin(AbstractHttpConfigurer::disable);
 		http.logout(AbstractHttpConfigurer::disable);
 		http.httpBasic(AbstractHttpConfigurer::disable);

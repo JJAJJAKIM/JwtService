@@ -100,9 +100,9 @@ public class JwtToken {
 	    try {
 	        Claims claims = getToken(token);
 	        log.info("===============================================");
-	        log.info("|ExpireTime\t: {}|", claims.getExpiration());
-	        log.info("|IIssuedTime\t: {}|", claims.getIssuedAt());
-	        log.info("|RealTime\t: {}|", Calendar.getInstance().getTime());
+	        log.info("|ExpireTime\t : {}|", claims.getExpiration());
+	        log.info("|IIssuedTime : {}|", claims.getIssuedAt());
+	        log.info("|RealTime\t : {}|", Calendar.getInstance().getTime());
 	        log.info("===============================================");
 	        return true;
 	    } catch (ExpiredJwtException exception) {

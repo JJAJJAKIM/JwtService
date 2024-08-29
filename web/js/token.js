@@ -3,8 +3,8 @@ $(document).ready(()=> {
 
     const EVENT1 = () => {
         $.ajax({
-            method: "POST",
-            url: "http://localhost:9000/token",
+            method: "GET",
+            url: "http://localhost:9000/",
             beforeSend : function(xhr){
                 xhr.setRequestHeader("Authorization", "Token");
             },
@@ -54,6 +54,25 @@ $(document).ready(()=> {
             }
         });
     }
+    const EVENT4 = (token) => {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:9000/home",
+            // data: {"token": token},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", token);
+            },
+            success: function (res) {
+                // console.log(res);
+                $("#div1").addClass("d-none");
+                $("#div2").removeClass("d-none");
+                $("#div2").html(res);
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    }
     $("#btn1").on("click", () => {
        EVENT1();
     });
@@ -77,6 +96,10 @@ $(document).ready(()=> {
         EVENT3(token);
         // alert("토큰 있당~");
 
+    });
+    $("#btn4").on("click", ()=> {
+        let token = localStorage.getItem("token");
+        EVENT4(token);
     });
 
     $("form").on("submit", e => {
